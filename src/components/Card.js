@@ -22,7 +22,7 @@ export default class Card extends Component {
   }
   render() {
     let {city,region,country,speed,direction,pressure,visiblity,humidity,sunrise,sunset,day,text,min,max}=this.props;
-    console.log(day,min,max,text)
+    // console.log(day,min,max,text)
      let x=new Date()
      let dayn=["Sunday","Monday","Tuesday","Wednusday","Thursday","Friday","Saturday"]
      function img(text)

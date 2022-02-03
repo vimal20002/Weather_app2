@@ -1,35 +1,24 @@
-import './App.css';
+import './App.css'
 
-import React, { Component } from 'react'
-import Navbar from './components/Navbar';
-import Carditem from './components/Carditem';
+import React, { useState, useEffect } from 'react'
+import Navbar from './components/Navbar'
+import Carditem from './components/Carditem'
 
-export default class App extends Component {
+const App = () => {
+  const [loc, setLoc] = useState({})
 
-  state = { latitude: null, longitude: null };
-  componentDidMount() {
-    window.navigator.geolocation.getCurrentPosition(
-        success => this.setState({ latitude: success.coords.latitude, longitude: success.coords.longitude })
-    );
+  useEffect(() => {
+    window.navigator.geolocation.getCurrentPosition((success) => {
+      setLoc({ lat: success.coords.latitude, long: success.coords.longitude })
+    })
+  }, [])
+
+  return (
+    <>
+      <Navbar />
+      <Carditem lt={loc.lat} lg={loc.long} />
+    </>
+  )
 }
 
-  
-    
-    
-
-
-   
-  render() {
-
-  
-    return (
-      <>
-
- 
- <Navbar/>
-     <Carditem lt={this.state.latitude} lg={this.state.longitude}/>
-      </>
-    )
-  }
-
-      }
+export default App
